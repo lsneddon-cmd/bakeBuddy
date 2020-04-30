@@ -63,12 +63,12 @@ body {
 }
 
 .App{
-  height: 100vh;
+  height: 93vh;
   width: 100vw;
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-direction: column;
 }
@@ -163,10 +163,10 @@ body {
 
 .footer{
   height: 7vh;
+  width: 100vw;
   display: flex;
-  position: absolute;
-  bottom: 1vh;
-  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .footer p{
