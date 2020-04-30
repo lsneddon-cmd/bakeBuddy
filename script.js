@@ -20,16 +20,22 @@ const tspBtn = document.getElementById('tsp');
 const tbspBtn = document.getElementById('tbsp');
 const flOzBtn = document.getElementById('floz');
 const flDBtn = document.getElementById('fld');
-// Value input calclulate Button
+// Value input and calclulate Button
+const inputValue = document.getElementById('input-value');
 const calcBtn = document.getElementById('calculate');
 // Output Screen Reset Button
 const resetBtn = document.getElementById('reset-button');
 // Output Text
 outputText = document.getElementById('outut-text');
 
+// Global Variables
+let ingredient;
+let system;
+let volume;
+let userInput;
 
-// Ingredients Object
-const ingredients = {
+// Ingredients Specific Weight
+const ingredientWeights = {
   "flour": 0.42268,
   "sugar": 0.8,
   "cocoa": 0.528,
@@ -63,50 +69,106 @@ const nextPage = (currentPage, nextPage) =>{
   nextPage.classList.remove('inacitve-window');
 };
 
+// Convert imperial to metric volume
+const convertVolume=(system, type, amount)=>{
+  let conversionRate;
+  if(system =='imp'){
+    for (let [key, value] of Object.entries(imperialVolumeRates)){
+      if(key == type){
+        conversionRate = value;
+      }
+    }
+    } else if(system == 'us'){
+      for (let [key, value] of Object.entries(imperialVolumeRates)){
+        if(key == type){
+          conversionRate = value;
+        }
+      }
+  }
+  return conversionRate * amount;
+}
+
+// Convert volume to weight
+const volumeToWeight=()=>{
+  // parameters
+  // loop through ingredients object to lookup correct conversion rate
+}
+
 // Calculate and display Output
-const calculateOutput = () =>{
-  let output = "Whoopsie! There was an error! <p>Please refresh your browser and try again</p>";
-  outputText.innerHTML = `${output}`;
+const calculateOutput = (ingredient, system, volume, userInput) =>{
+  const convertedVolume = convertVolume(system, volume, userInput);
+  if(ingredient == 'liquid'){
+    outputText.innerHTML = `${convertedVolume}`;
+  }
+  
 }
 
 // Event Functions
 // Page 1 Functions
 const flourEvent = () =>{
-
+  ingredient = 'flour';
   nextPage(pageOne, pageTwo);
 }
 const sugarEvent= () =>{
-
+  ingredient = 'sugar'
   nextPage(pageOne, pageTwo)
 };
 const butterEvent= () =>{
-
+  ingredient = 'butter';
   nextPage(pageOne, pageTwo)
 };
 const cocoaEvent= () =>{
-
+  ingredient = 'cocoa';
   nextPage(pageOne, pageTwo)
 };
 const liquidEvent= () =>{
-
+  ingredient = 'liquid';
   nextPage(pageOne, pageTwo)
 };
 // Page 2 Functions
 const imperialEvent=()=>{
-
+  system = 'imp';
   nextPage(pageTwo, pageThree);
 }
 const usLegalEvent=()=>{
-
+  system = 'us';
   nextPage(pageTwo, pageThree)
 }
 // Page 3 Functions
+const cupsEvent=()=>{
+  volume = 'cups';
+  nextPage(pageThree, pageFour);
+}
+const tspEvent=()=>{
+  volume = 'tsp';
+  nextPage(pageThree, pageFour);
+}
+const tbspEvent=()=>{
+  volume = 'tbsp';
+  nextPage(pageThree, pageFour);
+}
+const flOzEvent=()=>{
+  volume = 'floz';
+  nextPage(pageThree, pageFour);
+}
+const flDEvent=()=>{
+  volume = 'fld';
+  nextPage(pageThree, pageFour);
+}
 // Page 4 Functions
-const calcBtnEvent = () =>{
-  calculateOutput();
+const calcBtnEvent=()=>{
+  calculateOutput(ingredient, system, volume, userInput);
   nextPage(pageFour, pageFive);
 }
 // Page 5 Functions
+const resetEvent=()=>{
+  ingredient = '';
+  system = '';
+  volume = '';
+  value = '';
+  userInput = 0;
+  nextPage(pageFive, pageOne);
+}
 
 // Event Handlers
 // Page 1 - Ingredient button Event Handlers 
@@ -115,38 +177,19 @@ sugarBtn.addEventListener("click", () =>{liquidEvent()});
 butterBtn.addEventListener("click", () =>{butterEvent});
 cocoaBtn.addEventListener("click", () =>{cocoaEvent()});
 liquidBtn.addEventListener("click", () =>{liquidEvent()});
-
 // Page 2 - Measurement system Event Handlers
 impBtn.addEventListener("click", () =>{imperialEvent()});
 usBtn.addEventListener("click", () =>{usLegalEvent()});
-
 // Page 3 - Volume Button Event Handlers
-cupsBtn.addEventListener("click", () =>{
-  nextPage(pageThree, pageFour)
-});
-
-tspBtn.addEventListener("click", () =>{
-  nextPage(pageThree, pageFour)
-});
-
-tbspBtn.addEventListener("click", () =>{
-  nextPage(pageThree, pageFour)
-});
-
-flOzBtn.addEventListener("click", () =>{
-  nextPage(pageThree, pageFour)
-});
-
-flDBtn.addEventListener("click", () =>{
-  nextPage(pageThree, pageFour)
-});
-
+cupsBtn.addEventListener("click", () =>{cupsEvent()});
+tspBtn.addEventListener("click", () =>{tspEvent()});
+tbspBtn.addEventListener("click", () =>{tbspEvent()});
+flOzBtn.addEventListener("click", () =>{flOzEvent()});
+flDBtn.addEventListener("click", () =>{flDBtn()});
 // Page 4 - Value Event Handers
 calcBtn.addEventListener("click", () =>{calcBtnEvent()});
-
-
-
-// Page 5 - Output Event Handlers
-resetBtn.addEventListener("click", () =>{
-  nextPage(pageFive, pageOne)
+inputValue.addEventListener("change", (e)=>{
+  userInput = e.target.value;
 });
+// Page 5 - Output Event Handlers
+resetBtn.addEventListener("click", () =>{resetEvent()});
