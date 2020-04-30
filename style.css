@@ -75,7 +75,7 @@ body {
 
 .header{
   width: 200px;
-  height: 20vh;
+  height: 15vh;
   margin-top: 4vh;
   display: flex;
   justify-content: space-evenly;
@@ -165,7 +165,7 @@ body {
 }
 
 .footer{
-  height: 7vh;
+  height: 13vh;
   width: 100vw;
   margin-bottom: 4vh;
   display: flex;
