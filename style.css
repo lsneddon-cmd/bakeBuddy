@@ -165,9 +165,9 @@ body {
 }
 
 .footer{
-  height: 13vh;
+  height: 10vh;
   width: 100vw;
-  margin-bottom: 4vh;
+  margin-bottom: 7vh;
   display: flex;
   justify-content: center;
   align-items: center;
