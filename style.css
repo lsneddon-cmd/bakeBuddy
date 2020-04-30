@@ -76,6 +76,7 @@ body {
 .header{
   width: 200px;
   height: 20vh;
+  margin-top: 4vh;
   display: flex;
   justify-content: space-evenly;
   align-items: space-evenly;
@@ -101,7 +102,7 @@ body {
 .main-window{
   width: 90vw;
   max-width: 800px;
-  height: 73vh;
+  height: 65vh;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -164,6 +165,7 @@ body {
 .footer{
   height: 7vh;
   width: 100vw;
+  margin-bottom: 4vh;
   display: flex;
   justify-content: center;
   align-items: center;
