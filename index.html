@@ -1,40 +1,93 @@
-<!--
-    Lewis Sneddon
-    Bake Buddy
-    created 5th March 2020
--->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bake Buddy</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <h1>Bake Buddy</h1>
-      <div id="foot-note">App by Lewis Sneddon 2020</div>
-      <select id="cup-select" class="input">
-        <option value="0.25">1/4 cups</option>
-        <option value="0.5">1/2 cups</option>
-        <option value="0.75">3/4 cups</option>
-        <option value="1">1 cup</option>
-        <option value="1.25">1 and 1/4 cups</option>
-        <option value="1.5">1 and 1/2 cups</option>
-        <option value="1.75">1 and 3/4 cups</option>
-        <option value="2">2 cups</option>
-        <option value="2.25">2 and 1/4 cups</option>
-        <option value="2.5">2 and 1/2 cups</option>
-        <option value="2.75">2 and 3/4 cups</option>
-        <option value="3">3 cups</option>
-      </select>
-      <button id="flour" class="btn">Flour</button>
-      <button id="butter">Butter</button>
-      <button id="cocoa">Cocoa</button>
-      <button id="water">Water</button>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  
+  <title>Document</title>
+</head>
+<body>
+  <div class="App">
+    <div class="header">
+    <h1>Bake</h1>
+    <h1>Buddy</h1>
     </div>
+    <div class="main-window">
+      
+      <!-- First Window-->
+      <div id="first-window" class="active-window">
+        <div class="window-container">
+          <p class="subheading">Welcome to Bake Buddy!</p>
+         <p>Let's get started converting baking ingredients to measurements in the metric  system!</p>
+         <p>What type of ingredient do you have to convert?</p>
+          <div class="button-container">
+            <button id="flour-button">Flour</button>
+             <button id="sugar-button"
+             >Sugar</button>
+            <button id="butter-button"
+            >Butter</button>
+            <button id="cocoa-button"
+            >Cocoa</button>
+            <button id="liquid-button"
+            >Liquid</button>
+          </div>
+        </div>
+      </div>
+      <!-- End of First Window-->
 
-    <script src="script.js"></script>
-  </body>
+      <!-- Second Window-->
+      <div id="second-window" class="inactive-window">
+        <div class="window-container">
+          <p>Which system are we converting from?</p>
+          <button id="imp">Imperial</button>
+          <p class="subheading">or</p>
+          <button id="us">US Legal</button>
+        </div>
+      </div>
+      <!-- End of Second Window-->
+
+      <!-- Third Window -->
+      <div id="third-window" class="inactive-window">
+        <div class="window-container">
+          <p>Which Unit of volume would you like to convert from?</p>
+          <button id="cups">Cups</button>
+          <button id="tsp">Teaspoon</button>
+          <button id="tbsp">Tablespoon</button>
+          <button id="floz">Fluid Oz</button>
+          <button id="fld">Fluid Dram</button>
+        </div>
+      </div>
+      <!-- End of Third Window-->
+
+      <!-- Fourth Window -->
+      <div id="fourth-window" class="inactive-window">
+        <div class="window-container">
+          <p class="subheading">Finally, how many ...JSX... do you have to convert?</p>
+          <input
+            type="number"
+          />
+          <p>Use a decimal for a fractional number</p>
+          <button id="calculate">Let's Go!</button>
+        </div>
+      </div>
+      <!-- End of Fourth Window-->
+
+      <!-- Last Window -->
+      <div id="fifth-window" class="inactive-window">
+        <div class="window-container">
+          <p class="subheading">Converted!</p>
+          <p id="outut-text">Whoopsie! There was an error! Please refresh your browser and try again</p>
+          <button id="reset-button">Reset</button>
+        </div>
+      </div>
+      <!--End of Last window-->
+
+    </div>
+    <div class="footer">
+      <p>Bake Buddy 2020 by <a href="http://lsneddon.com">Lewis Sneddon</a></p>
+    </div>
+  </div>
+  <script src="script.js" type="text/javascript"></script>
+</body>
 </html>

@@ -1,53 +1,152 @@
-/*
-    Lewis Sneddon
-    Bake Buddy
-    created 5th March 2020
-*/
+// Assign DOM elements variables
+// Pages
+const pageOne = document.getElementById('first-window');
+const pageTwo = document.getElementById('second-window');
+const pageThree = document.getElementById('third-window');
+const pageFour = document.getElementById('fourth-window');
+const pageFive = document.getElementById('fifth-window');
+// Ingredient buttons
+const flourBtn = document.getElementById('flour-button');
+const sugarBtn = document.getElementById('sugar-button');
+const butterBtn = document.getElementById('butter-button');
+const cocoaBtn = document.getElementById('cocoa-button');
+const liquidBtn = document.getElementById('liquid-button');
+// System Buttons
+const impBtn = document.getElementById('imp');
+const usBtn = document.getElementById('us');
+// Volume Buttons
+const cupsBtn = document.getElementById('cups');
+const tspBtn = document.getElementById('tsp');
+const tbspBtn = document.getElementById('tbsp');
+const flOzBtn = document.getElementById('floz');
+const flDBtn = document.getElementById('fld');
+// Value input calclulate Button
+const calcBtn = document.getElementById('calculate');
+// Output Screen Reset Button
+const resetBtn = document.getElementById('reset-button');
+// Output Text
+outputText = document.getElementById('outut-text');
 
-const cupSelect = document.getElementById("cup-select");
-const flour = document.getElementById("flour");
-const butter = document.getElementById("butter");
-const cocoa = document.getElementById("cocoa");
-const water = document.getElementById("water");
 
-function calculateFlour(cupSelect) {
-  flourResult = cupSelect * 150;
-  window.alert(`There are ${flourResult}grams in ${cupSelect} cups of flour`);
+// Ingredients Object
+const ingredients = {
+  "flour": 0.42268,
+  "sugar": 0.8,
+  "cocoa": 0.528,
+  "butter": 0.955,
+  "almond-flour": 0.406,
+  "rice-flour": 0.68
 }
 
-function calculateButter(cupSelect) {
-  butterResult = cupSelect * 227;
-  window.alert(`There are ${butterResult}grams in ${cupSelect} cups of butter`);
+// Volume conversion tables
+const imperialVolumeRates = {
+  "cups": 284,
+  "tsp": 5,
+  "tbsp": 17.7582,
+  "flD": 3.696691,
+  "flOz": 28.4131
+}
+const usLegalVolumeRates = {
+  "cups": 240.131,
+  "tsp": 5,
+  "tbsp": 14.7868,
+  "flD": 3.696691,
+  "flOz": 29.57344
 }
 
-function calculateCocoa(cupSelect) {
-  cocoaResult = cupSelect * 100;
-  window.alert(`There are ${cocoaResult}grams in ${cupSelect} cups of cocoa`);
+// Functions
+// Next cycle through pages
+const nextPage = (currentPage, nextPage) =>{
+  currentPage.classList.add('inactive-window');
+  currentPage.classList.remove('active-window');
+  nextPage.classList.add('active-window');
+  nextPage.classList.remove('inacitve-window');
+};
+
+// Calculate and display Output
+const calculateOutput = () =>{
+  let output = "Whoopsie! There was an error! <p>Please refresh your browser and try again</p>";
+  outputText.innerHTML = `${output}`;
 }
 
-function calculateWater(cupSelect) {
-  waterResult = cupSelect * 237;
-  window.alert(`There are ${waterResult}ml in ${cupSelect} cups of water`);
+// Event Functions
+// Page 1 Functions
+const flourEvent = () =>{
+
+  nextPage(pageOne, pageTwo);
 }
+const sugarEvent= () =>{
 
-// Event listeners
-cupSelect.addEventListener("change", function(e) {
-  numberOfCups = e.target.value;
-  return numberOfCups;
+  nextPage(pageOne, pageTwo)
+};
+const butterEvent= () =>{
+
+  nextPage(pageOne, pageTwo)
+};
+const cocoaEvent= () =>{
+
+  nextPage(pageOne, pageTwo)
+};
+const liquidEvent= () =>{
+
+  nextPage(pageOne, pageTwo)
+};
+// Page 2 Functions
+const imperialEvent=()=>{
+
+  nextPage(pageTwo, pageThree);
+}
+const usLegalEvent=()=>{
+
+  nextPage(pageTwo, pageThree)
+}
+// Page 3 Functions
+// Page 4 Functions
+const calcBtnEvent = () =>{
+  calculateOutput();
+  nextPage(pageFour, pageFive);
+}
+// Page 5 Functions
+
+// Event Handlers
+// Page 1 - Ingredient button Event Handlers 
+flourBtn.addEventListener("click", () =>{flourEvent()});
+sugarBtn.addEventListener("click", () =>{liquidEvent()});
+butterBtn.addEventListener("click", () =>{butterEvent});
+cocoaBtn.addEventListener("click", () =>{cocoaEvent()});
+liquidBtn.addEventListener("click", () =>{liquidEvent()});
+
+// Page 2 - Measurement system Event Handlers
+impBtn.addEventListener("click", () =>{imperialEvent()});
+usBtn.addEventListener("click", () =>{usLegalEvent()});
+
+// Page 3 - Volume Button Event Handlers
+cupsBtn.addEventListener("click", () =>{
+  nextPage(pageThree, pageFour)
 });
 
-flour.addEventListener("click", function(e) {
-  return calculateFlour(cupSelect.value);
+tspBtn.addEventListener("click", () =>{
+  nextPage(pageThree, pageFour)
 });
 
-butter.addEventListener("click", function(e) {
-  return calculateButter(cupSelect.value);
+tbspBtn.addEventListener("click", () =>{
+  nextPage(pageThree, pageFour)
 });
 
-cocoa.addEventListener("click", function(e) {
-  return calculateCocoa(cupSelect.value);
+flOzBtn.addEventListener("click", () =>{
+  nextPage(pageThree, pageFour)
 });
 
-water.addEventListener("click", function(e) {
-  return calculateWater(cupSelect.value);
+flDBtn.addEventListener("click", () =>{
+  nextPage(pageThree, pageFour)
+});
+
+// Page 4 - Value Event Handers
+calcBtn.addEventListener("click", () =>{calcBtnEvent()});
+
+
+
+// Page 5 - Output Event Handlers
+resetBtn.addEventListener("click", () =>{
+  nextPage(pageFive, pageOne)
 });
