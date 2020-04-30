@@ -101,7 +101,7 @@ body {
 
 .main-window{
   width: 90vw;
-  height: 65vh;
+  height: 64vh;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -165,7 +165,7 @@ body {
 .footer{
   height: 10vh;
   width: 100vw;
-  margin-bottom: 9vh;
+  margin-bottom: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
