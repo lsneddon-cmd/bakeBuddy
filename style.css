@@ -101,7 +101,6 @@ body {
 
 .main-window{
   width: 90vw;
-  max-width: 800px;
   height: 65vh;
   display: flex;
   align-items: center;
@@ -124,7 +123,6 @@ body {
 .main-window .window-container{
   height: 100%;
   width: 90vw;
-  max-width: 800px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
