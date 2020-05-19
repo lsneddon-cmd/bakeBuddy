@@ -26,7 +26,7 @@ const calcBtn = document.getElementById('calculate');
 // Output Screen Reset Button
 const resetBtn = document.getElementById('reset-button');
 // Output Text
-outputText = document.getElementById('outut-text');
+outputText = document.getElementById('output-text');
 
 // Global Variables
 let ingredient;
@@ -72,15 +72,15 @@ const nextPage = (currentPage, nextPage) =>{
 // Convert imperial to metric volume
 const convertVolume=(system, type, amount)=>{
   let conversionRate;
-  if(system =='imp'){
+  if(system ==='imp'){
     for (let [key, value] of Object.entries(imperialVolumeRates)){
-      if(key == type){
+      if(key === type){
         conversionRate = value;
       }
     }
-    } else if(system == 'us'){
+    } else if(system === 'us'){
       for (let [key, value] of Object.entries(imperialVolumeRates)){
-        if(key == type){
+        if(key === type){
           conversionRate = value;
         }
       }
@@ -97,7 +97,7 @@ const volumeToWeight=()=>{
 // Calculate and display Output
 const calculateOutput = (ingredient, system, volume, userInput) =>{
   const convertedVolume = convertVolume(system, volume, userInput);
-  if(ingredient == 'liquid'){
+  if(ingredient === 'liquid'){
     outputText.innerHTML = `${convertedVolume}`;
   }
   
@@ -156,6 +156,9 @@ const flDEvent=()=>{
   nextPage(pageThree, pageFour);
 }
 // Page 4 Functions
+function inputEvent(e) {
+  userInput = e.target.value;
+}
 const calcBtnEvent=()=>{
   calculateOutput(ingredient, system, volume, userInput);
   nextPage(pageFour, pageFive);
@@ -173,7 +176,7 @@ const resetEvent=()=>{
 // Event Handlers
 // Page 1 - Ingredient button Event Handlers 
 flourBtn.addEventListener("click", () =>{flourEvent()});
-sugarBtn.addEventListener("click", () =>{liquidEvent()});
+sugarBtn.addEventListener("click", () =>{sugarEvent()});
 butterBtn.addEventListener("click", () =>{butterEvent});
 cocoaBtn.addEventListener("click", () =>{cocoaEvent()});
 liquidBtn.addEventListener("click", () =>{liquidEvent()});
@@ -185,11 +188,9 @@ cupsBtn.addEventListener("click", () =>{cupsEvent()});
 tspBtn.addEventListener("click", () =>{tspEvent()});
 tbspBtn.addEventListener("click", () =>{tbspEvent()});
 flOzBtn.addEventListener("click", () =>{flOzEvent()});
-flDBtn.addEventListener("click", () =>{flDBtn()});
-// Page 4 - Value Event Handers
+flDBtn.addEventListener("click", () =>{flDEvent()});
+// Page 4 - Value Event Handlers
 calcBtn.addEventListener("click", () =>{calcBtnEvent()});
-inputValue.addEventListener("change", (e)=>{
-  userInput = e.target.value;
-});
+inputValue.addEventListener("change", inputEvent);
 // Page 5 - Output Event Handlers
 resetBtn.addEventListener("click", () =>{resetEvent()});
