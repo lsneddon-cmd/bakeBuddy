@@ -20,7 +20,7 @@ const tspBtn = document.getElementById('tsp');
 const tbspBtn = document.getElementById('tbsp');
 const flOzBtn = document.getElementById('floz');
 const flDBtn = document.getElementById('fld');
-// Value input and calclulate Button
+// Value input and calculate Button
 const inputValue = document.getElementById('input-value');
 const calcBtn = document.getElementById('calculate');
 // Output Screen Reset Button
@@ -62,7 +62,7 @@ const usLegalVolumeRates = {
 
 // Functions
 // Next cycle through pages
-const nextPage = (currentPage, nextPage) =>{
+const nextPage = (currentPage, nextPage) => {
   currentPage.classList.add('inactive-window');
   currentPage.classList.remove('active-window');
   nextPage.classList.add('active-window');
@@ -70,15 +70,15 @@ const nextPage = (currentPage, nextPage) =>{
 };
 
 // Convert imperial to metric volume
-const convertVolume=(system, type, amount)=>{
+const convertVolume = (system, type, amount) => {
   let conversionRate;
-  if(system ==='imp'){
+  if (system ==='imp') {
     for (let [key, value] of Object.entries(imperialVolumeRates)){
-      if(key === type){
+      if (key === type) {
         conversionRate = value;
       }
     }
-    } else if(system === 'us'){
+    } else if (system === 'us') {
       for (let [key, value] of Object.entries(imperialVolumeRates)){
         if(key === type){
           conversionRate = value;
@@ -89,15 +89,15 @@ const convertVolume=(system, type, amount)=>{
 }
 
 // Convert volume to weight
-const volumeToWeight=()=>{
+const volumeToWeight = () => {
   // parameters
   // loop through ingredients object to lookup correct conversion rate
 }
 
 // Calculate and display Output
-const calculateOutput = (ingredient, system, volume, userInput) =>{
+const calculateOutput = (ingredient, system, volume, userInput) => {
   const convertedVolume = convertVolume(system, volume, userInput);
-  if(ingredient === 'liquid'){
+  if (ingredient === 'liquid') {
     outputText.innerHTML = `${convertedVolume}`;
   }
   
@@ -105,53 +105,53 @@ const calculateOutput = (ingredient, system, volume, userInput) =>{
 
 // Event Functions
 // Page 1 Functions
-const flourEvent = () =>{
+const flourEvent = () => {
   ingredient = 'flour';
   nextPage(pageOne, pageTwo);
 }
-const sugarEvent= () =>{
+const sugarEvent = () => {
   ingredient = 'sugar'
   nextPage(pageOne, pageTwo)
 };
-const butterEvent= () =>{
+const butterEvent = () => {
   ingredient = 'butter';
   nextPage(pageOne, pageTwo)
 };
-const cocoaEvent= () =>{
+const cocoaEvent = () => {
   ingredient = 'cocoa';
   nextPage(pageOne, pageTwo)
 };
-const liquidEvent= () =>{
+const liquidEvent = () => {
   ingredient = 'liquid';
   nextPage(pageOne, pageTwo)
 };
 // Page 2 Functions
-const imperialEvent=()=>{
+const imperialEvent = () => {
   system = 'imp';
   nextPage(pageTwo, pageThree);
 }
-const usLegalEvent=()=>{
+const usLegalEvent = () => {
   system = 'us';
   nextPage(pageTwo, pageThree)
 }
 // Page 3 Functions
-const cupsEvent=()=>{
+const cupsEvent = () => {
   volume = 'cups';
   nextPage(pageThree, pageFour);
 }
-const tspEvent=()=>{
+const tspEvent = () => {
   volume = 'tsp';
   nextPage(pageThree, pageFour);
 }
-const tbspEvent=()=>{
+const tbspEvent = () => {
   volume = 'tbsp';
   nextPage(pageThree, pageFour);
 }
-const flOzEvent=()=>{
+const flOzEvent = () => {
   volume = 'floz';
   nextPage(pageThree, pageFour);
 }
-const flDEvent=()=>{
+const flDEvent = () => {
   volume = 'fld';
   nextPage(pageThree, pageFour);
 }
@@ -159,12 +159,12 @@ const flDEvent=()=>{
 function inputEvent(e) {
   userInput = e.target.value;
 }
-const calcBtnEvent=()=>{
+const calcBtnEvent = () => {
   calculateOutput(ingredient, system, volume, userInput);
   nextPage(pageFour, pageFive);
 }
 // Page 5 Functions
-const resetEvent=()=>{
+const resetEvent = () => {
   ingredient = '';
   system = '';
   volume = '';
